@@ -117,6 +117,7 @@ module.exports = {
   devServer: {
     port: 3000,
     hot: isDev,
+    historyApiFallback: true,
   },
   devtool: isDev ? 'source-map' : '',
   plugins: createPlugins(),

@@ -19,6 +19,7 @@ const Button = styled.button`
   margin: auto auto 0;
   background-color: ${ConstStyle.C_WHITE};
   border: none;
+  cursor: pointer;
 `;
 
 export {Wrapper, Button};
