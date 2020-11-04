@@ -3,18 +3,22 @@ import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import {List, Item} from "./styles";
 
-const SidebarItem = ({elem, Icon}) => {
+const SidebarItem = ({elem, Icon, fullSidebar}) => {
   return (
     <Item>
-      {/* Icon Component */}
-      <Icon />
+      <div>
+        {/* Icon Component */}
+        <Icon />
+      </div>
 
-      <span>{elem}</span>
+      { fullSidebar &&
+        <span>{elem}</span>
+      }
     </Item>
   );
 };
 
-const SidebarItems = () => {
+const SidebarItems = ({fullSidebar}) => {
   const arr = [
     {
       category: 'Users',
@@ -35,6 +39,7 @@ const SidebarItems = () => {
           key={elem.category}
           elem={elem.category}
           Icon={elem.icon}
+          fullSidebar={fullSidebar}
         />
       )}
 

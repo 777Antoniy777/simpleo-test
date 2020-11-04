@@ -14,14 +14,14 @@ const TableCell = styled.td`
       min-width: 70px;
 
       .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 30px;
         height: 30px;
+        background-color: transparent;
         border: none;
         cursor: pointer;
-
-        &.button-edit {
-
-        }
 
         &:first-child {
           margin-right: 10px;

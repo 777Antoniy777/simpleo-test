@@ -8,17 +8,16 @@ const Item = styled.li`
   align-items: center;
   margin-bottom: 10px;
   padding: 0 5px;
+  cursor: pointer;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  svg {
+  div {
+    width: 24px;
+    height: 24px;
     margin-right: 10px;
   }
 
-  span {
-    cursor: pointer;
+  &:last-child {
+    margin-bottom: 0;
   }
 `;
 
