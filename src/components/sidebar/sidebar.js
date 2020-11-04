@@ -1,4 +1,5 @@
 import React from "react";
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import {Wrapper, Button} from "./styles";
 import SidebarItems from "../sidebar-items/sidebar-items";
 
@@ -9,7 +10,10 @@ const Sidebar = () => {
       {/* Categories list */}
       <SidebarItems />
 
-      <Button type="button" aria-label="Close filter"></Button>
+      <Button type="button" aria-label="Close filter">
+        {/* Icon Component */}
+        <KeyboardBackspaceIcon />
+      </Button>
     </Wrapper>
   );
 };

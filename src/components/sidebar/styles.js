@@ -17,7 +17,7 @@ const Button = styled.button`
   width: 40px;
   height: 40px;
   margin: auto auto 0;
-  background-color: ${ConstStyle.C_WHITE};
+  background-color: transparent;
   border: none;
   cursor: pointer;
 `;

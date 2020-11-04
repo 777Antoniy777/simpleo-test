@@ -1,15 +1,16 @@
 import React from "react";
 import PeopleIcon from '@material-ui/icons/People';
-import BlurLinearIcon from '@material-ui/icons/BlurLinear';
+import ListAltIcon from '@material-ui/icons/ListAlt';
 import {List, Item} from "./styles";
 
-const SidebarItem = ({elem, icon}) => {
-  console.log(icon)
+const SidebarItem = ({elem, Icon}) => {
   return (
-    <React.Fragment>
-      
-      <Item>{elem}</Item>
-    </React.Fragment>
+    <Item>
+      {/* Icon Component */}
+      <Icon />
+
+      <span>{elem}</span>
+    </Item>
   );
 };
 
@@ -21,7 +22,7 @@ const SidebarItems = () => {
     },
     {
       category: 'Temperature',
-      icon: BlurLinearIcon,
+      icon: ListAltIcon,
     },
   ];
 
@@ -33,7 +34,7 @@ const SidebarItems = () => {
           // properties
           key={elem.category}
           elem={elem.category}
-          icon={elem.icon}
+          Icon={elem.icon}
         />
       )}
 
