@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {ConstStyle} from "../app/const-styles";
 
 const TableCell = styled.td`
   width: 50%;
@@ -8,6 +9,15 @@ const TableCell = styled.td`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    input[type="text"] {
+      width: 170px;
+      height: 30px;
+      padding: 0;
+      color: ${ConstStyle.C_LIGHTGRAY};
+      border: none;
+      border-bottom: 1px solid ${ConstStyle.C_LIGHTGRAY};
+    }
 
     .buttons-wrapper {
       display: flex;

@@ -8,6 +8,7 @@ const Item = styled.li`
   align-items: center;
   margin-bottom: 10px;
   padding: 0 5px;
+  text-transform: capitalize;
   cursor: pointer;
 
   div {

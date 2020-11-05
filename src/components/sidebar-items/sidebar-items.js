@@ -1,45 +1,41 @@
 import React from "react";
-import PeopleIcon from '@material-ui/icons/People';
-import ListAltIcon from '@material-ui/icons/ListAlt';
 import {List, Item} from "./styles";
 
-const SidebarItem = ({elem, Icon, fullSidebar}) => {
+const SidebarItem = ({elem, fullSidebar, setCurrentCategory}) => {
+  const {category, icon: Icon} = elem;
+
+  const handleItemClick = () => {
+    // dispatcher
+    setCurrentCategory(category);
+  };
+
   return (
-    <Item>
+    <Item onClick={handleItemClick}>
       <div>
         {/* Icon Component */}
         <Icon />
       </div>
 
       { fullSidebar &&
-        <span>{elem}</span>
+        <span>{category}</span>
       }
     </Item>
   );
 };
 
-const SidebarItems = ({fullSidebar}) => {
-  const arr = [
-    {
-      category: 'Users',
-      icon: PeopleIcon,
-    },
-    {
-      category: 'Temperature',
-      icon: ListAltIcon,
-    },
-  ];
-
+const SidebarItems = ({categories, fullSidebar, setCurrentCategory}) => {
   return (
     <List>
 
-      { arr.map(elem =>
+      { categories.length > 0 &&
+        categories.map(elem =>
         <SidebarItem
           // properties
-          key={elem.category}
-          elem={elem.category}
-          Icon={elem.icon}
+          key={elem.id}
+          elem={elem}
           fullSidebar={fullSidebar}
+          // handlers
+          setCurrentCategory={setCurrentCategory}
         />
       )}
 
