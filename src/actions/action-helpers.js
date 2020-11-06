@@ -10,4 +10,8 @@ const deleteItem = (array, payload) => {
   return array.filter((item, index) => index !== payload.index);
 };
 
-export {updateItem, deleteItem};
+const addItem = (array, payload) => {
+  return [...array.slice(0, payload.index), payload];
+}
+
+export {updateItem, deleteItem, addItem};

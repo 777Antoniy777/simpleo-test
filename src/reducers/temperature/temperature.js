@@ -2,20 +2,17 @@ import {TemperatureActionType} from "../../actions/temperature/action-creator";
 import {updateItem, deleteItem} from "../../actions/action-helpers";
 
 const initialState = {
-  temperature: [
-    {
-      id: 1,
-      data: 6,
-    },
-    {
-      id: 2,
-      data: 12,
-    },
-  ],
+  temperature: [],
 };
 
 export default function createState(state = initialState, action) {
   switch (action.type) {
+    case TemperatureActionType.GET_TEMPERATURE:
+      return {
+        ...state,
+        temperature: action.payload,
+      };
+
     case TemperatureActionType.EDIT_TEMPERATURE:
       return {
         ...state,

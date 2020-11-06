@@ -5,6 +5,7 @@ import {getUsersData} from "../../selectors/users/selectors";
 import {getCurrentCategory} from "../../selectors/categories/selectors";
 import {TemperatureActionCreator} from "../../actions/temperature/action-creator";
 import {UsersActionCreator} from "../../actions/users/action-creator";
+import {TemperatureAsyncActionCreator} from "../../actions/temperature/async-action-creator";
 import {Wrapper, TableWrapper, Table, TableRow, TableTitle} from "./styles";
 import DataRowItems from "../data-row-items/data-row-items";
 
@@ -67,8 +68,11 @@ const mapDispatchToProps = (dispatch) => ({
   editTemperature: (data) => {
     dispatch(TemperatureActionCreator.editTemperature(data));
   },
+  // deleteTemperature: (data) => {
+  //   dispatch(TemperatureActionCreator.deleteTemperature(data));
+  // },
   deleteTemperature: (data) => {
-    dispatch(TemperatureActionCreator.deleteTemperature(data));
+    dispatch(TemperatureAsyncActionCreator.deleteTemperature(data));
   },
   editUser: (data) => {
     dispatch(UsersActionCreator.editUser(data));

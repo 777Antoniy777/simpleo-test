@@ -1,25 +1,18 @@
 import {UsersActionType} from "../../actions/users/action-creator";
-import {updateItem, deleteItem} from "../../actions/action-helpers";
+import {updateItem, deleteItem, addItem} from "../../actions/action-helpers";
 
 const initialState = {
-  users: [
-    {
-      id: 1,
-      data: 'User Petr',
-    },
-    {
-      id: 2,
-      data: "User Alexey",
-    },
-    {
-      id: 3,
-      data: "User Ivan",
-    },
-  ],
+  users: [],
 };
 
 export default function createState(state = initialState, action) {
   switch (action.type) {
+    case UsersActionType.GET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+
     case UsersActionType.EDIT_USER:
       return {
         ...state,
@@ -30,6 +23,12 @@ export default function createState(state = initialState, action) {
       return {
         ...state,
         users: deleteItem(state.users, action.payload),
+      };
+
+    case UsersActionType.ADD_USER:
+      return {
+        ...state,
+        users: addItem(state.users, action.payload),
       };
 
     default:

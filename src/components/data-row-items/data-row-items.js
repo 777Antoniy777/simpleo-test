@@ -69,6 +69,7 @@ class DataRowItem extends React.PureComponent {
             item: itemData,
             index,
           });
+          // deleteTemperature(itemData.id);
           break;
 
         case 'users':
@@ -147,7 +148,7 @@ class DataRowItem extends React.PureComponent {
 
 const DataRowItems = ({users, temperature, currentCategory, editTemperature, deleteTemperature, editUser, deleteUser}) => {
   const setData = () => {
-    let data = null;
+    let data = [];
 
     switch (currentCategory) {
       case 'temperature':

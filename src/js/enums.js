@@ -3,4 +3,9 @@ const AppRoute = {
   SIGN_IN: `/login`,
 };
 
-export {AppRoute};
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+  AUTH: `AUTH`,
+};
+
+export {AppRoute, AuthorizationStatus};

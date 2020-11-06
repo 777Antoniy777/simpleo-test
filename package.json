@@ -7,8 +7,10 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --mode production --open",
-    "stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
+    "start": "concurrently --kill-others \"npm run start-json-server\" \"npm run start-webpack-dev-server\"",
+    "stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json",
+    "start-json-server": "json-server --watch db.json --port 3030",
+    "start-webpack-dev-server": "cross-env NODE_ENV=development webpack-dev-server --mode production --open"
   },
   "browserslist": {
     "production": [
@@ -73,6 +75,7 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.21.0",
+    "concurrently": "^5.3.0",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
