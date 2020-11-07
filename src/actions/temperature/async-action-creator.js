@@ -11,12 +11,23 @@ const TemperatureAsyncActionCreator = {
       });
   },
 
+  editTemperature: (data) => (dispatch, getState, api) => {
+    const {item} = data;
+
+    return api.put(`/temperature/${item.id}`, item)
+      .then((response) => {
+        dispatch(TemperatureActionCreator.editTemperature(data));
+      })
+      .catch((error) => {
+        throw error;
+      });
+  },
+
   deleteTemperature: (data) => (dispatch, getState, api) => {
     const {item} = data;
 
     return api.delete(`/temperature/${item.id}`)
       .then((response) => {
-        console.log(response)
         dispatch(TemperatureActionCreator.deleteTemperature(data));
       })
       .catch((error) => {

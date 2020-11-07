@@ -10,6 +10,30 @@ const UsersAsyncActionCreator = {
         throw error;
       });
   },
+
+  editUser: (data) => (dispatch, getState, api) => {
+    const {item} = data;
+
+    return api.put(`/users/${item.id}`, item)
+      .then((response) => {
+        dispatch(UsersActionCreator.editUser(data));
+      })
+      .catch((error) => {
+        throw error;
+      });
+  },
+
+  deleteUser: (data) => (dispatch, getState, api) => {
+    const {item} = data;
+
+    return api.delete(`/users/${item.id}`)
+      .then((response) => {
+        dispatch(UsersActionCreator.deleteUser(data));
+      })
+      .catch((error) => {
+        throw error;
+      });
+  },
 };
 
 export {UsersAsyncActionCreator};

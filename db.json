@@ -1,26 +1,23 @@
 {
   "temperature": [
     { "id": 1, "data": 6 },
-    {
-      "id": 2,
-      "data": 12
-    }
+    { "id": 2, "data": 12 }
   ],
   "users": [
     {
       "id": 1,
       "data": "Petr",
-      "password": "1"
+      "password": 1
     },
     {
       "id": 2,
       "data": "Alexey",
-      "password": "2"
+      "password": 2
     },
     {
       "id": 3,
       "data": "Ivan",
-      "password": "3"
+      "password": 3
     }
   ],
   "categories": [
