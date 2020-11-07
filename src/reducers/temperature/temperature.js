@@ -3,6 +3,10 @@ import {updateItem, deleteItem} from "../../actions/action-helpers";
 
 const initialState = {
   temperature: [],
+  requestData: {
+    status: null,
+    message: '',
+  },
 };
 
 export default function createState(state = initialState, action) {
@@ -23,6 +27,12 @@ export default function createState(state = initialState, action) {
       return {
         ...state,
         temperature: deleteItem(state.temperature, action.payload),
+      };
+
+    case TemperatureActionType.SET_TEMPERATURE_REQUEST_DATA:
+      return {
+        ...state,
+        requestData: action.payload,
       };
 
     default:

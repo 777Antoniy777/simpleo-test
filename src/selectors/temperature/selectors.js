@@ -2,4 +2,8 @@ const getTemperatureData = (state) => {
   return state.temperature.temperature;
 };
 
-export {getTemperatureData};
+const getTemperatureRequestData = (state) => {
+  return state.temperature.requestData;
+};
+
+export {getTemperatureData, getTemperatureRequestData};

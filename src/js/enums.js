@@ -8,4 +8,13 @@ const AuthorizationStatus = {
   AUTH: `AUTH`,
 };
 
-export {AppRoute, AuthorizationStatus};
+const RequestMessage = {
+  ERROR_MESSAGE: 'Something error. Repeat later',
+};
+
+const RequestStatus = {
+  OK: 200,
+  ERROR: 404,
+};
+
+export {AppRoute, AuthorizationStatus, RequestMessage, RequestStatus};

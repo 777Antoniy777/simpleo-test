@@ -2,4 +2,8 @@ const getUsersData = (state) => {
   return state.users.users;
 };
 
-export {getUsersData};
+const getUsersRequestData = (state) => {
+  return state.users.requestData;
+};
+
+export {getUsersData, getUsersRequestData};

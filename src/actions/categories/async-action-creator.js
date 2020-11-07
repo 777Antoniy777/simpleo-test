@@ -1,5 +1,6 @@
 import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
+import {RequestMessage, RequestStatus} from "../../js/enums";
 import {CategoriesActionCreator} from "./action-creator";
 
 const CategoriesAsyncActionCreator = {
@@ -16,9 +17,18 @@ const CategoriesAsyncActionCreator = {
         });
 
         dispatch(CategoriesActionCreator.getCategories(data));
-        dispatch(CategoriesActionCreator.setCurrentCategory(data[0].category))
+        dispatch(CategoriesActionCreator.setCurrentCategory(data[0].category));
+        dispatch(CategoriesActionCreator.setRequestData({
+          status: RequestStatus.OK,
+          message: '',
+        }));
       })
       .catch((error) => {
+        dispatch(CategoriesActionCreator.setRequestData({
+          status: RequestStatus.ERROR,
+          message: RequestMessage.ERROR_MESSAGE,
+        }));
+
         throw error;
       });
   },

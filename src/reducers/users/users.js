@@ -3,6 +3,10 @@ import {updateItem, deleteItem, addItem} from "../../actions/action-helpers";
 
 const initialState = {
   users: [],
+  requestData: {
+    status: null,
+    message: '',
+  },
 };
 
 export default function createState(state = initialState, action) {
@@ -29,6 +33,12 @@ export default function createState(state = initialState, action) {
       return {
         ...state,
         users: addItem(state.users, action.payload),
+      };
+
+    case UsersActionType.SET_USERS_REQUEST_DATA:
+      return {
+        ...state,
+        requestData: action.payload,
       };
 
     default:

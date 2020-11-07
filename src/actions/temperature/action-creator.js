@@ -2,6 +2,7 @@ const TemperatureActionType = {
   GET_TEMPERATURE: 'GET_TEMPERATURE',
   EDIT_TEMPERATURE: 'EDIT_TEMPERATURE',
   DELETE_TEMPERATURE: 'DELETE_TEMPERATURE',
+  SET_TEMPERATURE_REQUEST_DATA: 'SET_TEMPERATURE_REQUEST_DATA',
 };
 
 const TemperatureActionCreator = {
@@ -17,6 +18,11 @@ const TemperatureActionCreator = {
 
   deleteTemperature: (data) => ({
     type: TemperatureActionType.DELETE_TEMPERATURE,
+    payload: data,
+  }),
+
+  setRequestData: (data) => ({
+    type: TemperatureActionType.SET_TEMPERATURE_REQUEST_DATA,
     payload: data,
   }),
 };

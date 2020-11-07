@@ -3,6 +3,10 @@ import {CategoriesActionType} from "../../actions/categories/action-creator";
 const initialState = {
   categories: [],
   currentCategory: null,
+  requestData: {
+    status: null,
+    message: '',
+  },
 };
 
 export default function createState(state = initialState, action) {
@@ -17,6 +21,12 @@ export default function createState(state = initialState, action) {
       return {
         ...state,
         currentCategory: action.payload,
+      };
+
+    case CategoriesActionType.SET_CATEGORIES_REQUEST_DATA:
+      return {
+        ...state,
+        requestData: action.payload,
       };
 
     default:

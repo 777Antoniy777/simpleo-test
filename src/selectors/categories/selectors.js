@@ -6,4 +6,8 @@ const getCurrentCategory = (state) => {
   return state.categories.currentCategory;
 };
 
-export {getCategories, getCurrentCategory};
+const getCategoriesRequestData = (state) => {
+  return state.categories.requestData;
+};
+
+export {getCategories, getCurrentCategory, getCategoriesRequestData};

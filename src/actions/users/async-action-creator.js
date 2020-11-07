@@ -1,3 +1,4 @@
+import {RequestMessage, RequestStatus} from "../../js/enums";
 import {UsersActionCreator} from "./action-creator";
 
 const UsersAsyncActionCreator = {
@@ -5,8 +6,17 @@ const UsersAsyncActionCreator = {
     return api.get('/users')
       .then((response) => {
         dispatch(UsersActionCreator.getUsers(response.data));
+        dispatch(UsersActionCreator.setRequestData({
+          status: RequestStatus.OK,
+          message: '',
+        }));
       })
       .catch((error) => {
+        dispatch(UsersActionCreator.setRequestData({
+          status: RequestStatus.ERROR,
+          message: RequestMessage.ERROR_MESSAGE,
+        }));
+
         throw error;
       });
   },
@@ -17,8 +27,17 @@ const UsersAsyncActionCreator = {
     return api.put(`/users/${item.id}`, item)
       .then((response) => {
         dispatch(UsersActionCreator.editUser(data));
+        dispatch(UsersActionCreator.setRequestData({
+          status: RequestStatus.OK,
+          message: '',
+        }));
       })
       .catch((error) => {
+        dispatch(UsersActionCreator.setRequestData({
+          status: RequestStatus.ERROR,
+          message: RequestMessage.ERROR_MESSAGE,
+        }));
+
         throw error;
       });
   },
@@ -29,8 +48,17 @@ const UsersAsyncActionCreator = {
     return api.delete(`/users/${item.id}`)
       .then((response) => {
         dispatch(UsersActionCreator.deleteUser(data));
+        dispatch(UsersActionCreator.setRequestData({
+          status: RequestStatus.OK,
+          message: '',
+        }));
       })
       .catch((error) => {
+        dispatch(UsersActionCreator.setRequestData({
+          status: RequestStatus.ERROR,
+          message: RequestMessage.ERROR_MESSAGE,
+        }));
+
         throw error;
       });
   },
