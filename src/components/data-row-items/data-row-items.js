@@ -87,26 +87,17 @@ class DataRowItem extends React.PureComponent {
 
   handleInputChange = (evt) => {
     const {elem} = this.props;
-    const {id, password} = elem;
     const target = evt.target;
     const value = target.value;
 
-    if (password) {
-      this.setState({
-        itemData: {
-          id,
-          data: value,
-          password,
-        },
-      });
-    } else {
-      this.setState({
-        itemData: {
-          id,
-          data: value,
-        },
-      });
-    }
+    const newElem = {
+      ...elem,
+      data: value,
+    };
+
+    this.setState({
+      itemData: newElem,
+    });
   }
 
   render() {

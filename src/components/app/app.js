@@ -1,24 +1,45 @@
 import React from "react";
+import {connect} from "react-redux";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import {AppRoute} from "../../js/enums";
+import {AppRoute, AuthorizationStatus} from "../../js/enums";
+import {getAuthorizationStatus} from "../../selectors/user/selectors";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
+import PrivateRoute from "../private-route/private-route";
 
-const App = () => {
+const App = ({authorizationStatus}) => {
+  if (!authorizationStatus) {
+    return null;
+  }
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route
+        <PrivateRoute
+          // properties
           path={AppRoute.MAIN} exact
-          render={() => (
-            <Main />
+          condRedirect={AuthorizationStatus.AUTH}
+          linkRedirect={AppRoute.SIGN_IN}
+          authorizationStatus={authorizationStatus}
+          render={(props) => (
+            <Main
+              // properties
+              {...props}
+            />
           )}
         />
 
-        <Route
+        <PrivateRoute
+          // properties
           path={AppRoute.SIGN_IN}
-          render={() => (
-            <SignIn />
+          condRedirect={AuthorizationStatus.NO_AUTH}
+          linkRedirect={AppRoute.MAIN}
+          authorizationStatus={authorizationStatus}
+          render={(props) => (
+            <SignIn
+              // properties
+              {...props}
+            />
           )}
         />
       </Switch>
@@ -26,4 +47,11 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+});
+
+export default connect(
+    mapStateToProps,
+    null
+)(App);

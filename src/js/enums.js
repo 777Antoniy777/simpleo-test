@@ -10,6 +10,7 @@ const AuthorizationStatus = {
 
 const RequestMessage = {
   ERROR_MESSAGE: 'Something error. Repeat later',
+  ERROR_LOGIN_MESSAGE: 'You are not login. Please register',
 };
 
 const RequestStatus = {

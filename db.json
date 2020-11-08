@@ -10,7 +10,11 @@
     }
   ],
   "users": [
-    { "id": 1, "data": "Petr", "password": 1 },
+    {
+      "id": 1,
+      "data": "Petr",
+      "password": 1
+    },
     {
       "id": 2,
       "data": "Alexey",

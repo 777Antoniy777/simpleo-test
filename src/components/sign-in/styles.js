@@ -40,7 +40,7 @@ const Form =  styled.form`
     height: 30px;
     padding: 0 10px;
     border: none;
-    border-bottom: 1px solid ${ConstStyle.C_BLACK};
+    border-bottom: ${props => props.error ? `1px solid ${ConstStyle.C_ALIZARIN_CRIMSON}` : `1px solid ${ConstStyle.C_BLACK}`};
   }
 
   .buttons-wrapper {
@@ -70,4 +70,10 @@ const Form =  styled.form`
   }
 `;
 
-export {FormWrapper, SiteWrapper, Title, Form};
+const ErrorMessage = styled.p`
+  font-size: 12px;
+  line-height: 14px;
+  color: ${ConstStyle.C_ALIZARIN_CRIMSON};
+`;
+
+export {FormWrapper, SiteWrapper, Title, Form, ErrorMessage};

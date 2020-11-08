@@ -1,5 +1,9 @@
-const checkAuthorizationStatus = (state) => {
+const getAuthorizationStatus = (state) => {
   return state.user.authorizationStatus;
 };
 
-export {checkAuthorizationStatus};
+const getUserRequestData = (state) => {
+  return state.user.requestData;
+};
+
+export {getAuthorizationStatus, getUserRequestData};
