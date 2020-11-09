@@ -1,8 +1,15 @@
 import {AuthorizationStatus} from "../../js/enums";
+import {setAuthorizationStatus} from "../../js/setAuthorizationStatus";
 import {UserActionType} from "../../actions/user/action-creator";
 
+let authorizationStatus = window.sessionStorage.getItem('authorizationStatus');
+
+if (!authorizationStatus) {
+  authorizationStatus = setAuthorizationStatus(AuthorizationStatus.NO_AUTH);
+}
+
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authorizationStatus: authorizationStatus,
   requestData: {
     status: null,
     message: '',

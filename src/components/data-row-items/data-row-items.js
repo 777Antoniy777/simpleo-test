@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckIcon from '@material-ui/icons/Check';
@@ -187,6 +188,47 @@ const DataRowItems = ({users, temperature, currentCategory, editTemperature, del
       )}
     </React.Fragment>
   );
+};
+
+DataRowItem.propTypes = {
+  elem: PropTypes.oneOfType([
+    PropTypes.shape({
+      id: PropTypes.number,
+      data: PropTypes.string,
+      password: PropTypes.string,
+    }),
+    PropTypes.shape({
+      id: PropTypes.number,
+      data: PropTypes.string,
+    }),
+  ]),
+  currentCategory: PropTypes.string,
+  index: PropTypes.number,
+  editTemperature: PropTypes.func,
+  editUser: PropTypes.func,
+  deleteTemperature: PropTypes.func,
+  deleteUser: PropTypes.func,
+};
+
+DataRowItems.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      data: PropTypes.string,
+      password: PropTypes.string,
+    }),
+  ),
+  temperature: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      data: PropTypes.string,
+    }),
+  ),
+  currentCategory: PropTypes.string,
+  editTemperature: PropTypes.func,
+  deleteTemperature: PropTypes.func,
+  editUser: PropTypes.func,
+  deleteUser: PropTypes.func,
 };
 
 export default DataRowItems;

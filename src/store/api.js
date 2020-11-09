@@ -9,13 +9,13 @@ const axiosInstance = axios.create({
 
 // {
 //   "temperature": [
-//     { "id": 1, "data": 6 },
-//     { "id": 2, "data": 12 }
+//     { "id": 1, "data": "6" },
+//     { "id": 2, "data": "12" }
 //   ],
 //   "users": [
-//     { "id": 1, "data": "Petr", "password": 1 },
-//     { "id": 2, "data": "Alexey", "password": 2 },
-//     { "id": 3, "data": "Ivan", "password": 3 }
+//     { "id": 1, "data": "Petr", "password": "1" },
+//     { "id": 2, "data": "Alexey", "password": "2" },
+//     { "id": 3, "data": "Ivan", "password": "3" }
 //   ],
 //   "categories": [
 //     { "id": 1, "category": "users" },

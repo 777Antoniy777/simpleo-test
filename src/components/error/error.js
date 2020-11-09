@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {RequestStatus} from "../../js/enums";
 import {ErrorDescription} from "./styles";
 
@@ -22,6 +23,18 @@ const Error = ({requestData}) => {
       }
     </React.Fragment>
   );
+};
+
+Error.propTypes = {
+  requestData: PropTypes.arrayOf(
+    PropTypes.shape({
+      status: PropTypes.oneOfType([
+        PropTypes.number,
+        null,
+      ]),
+      message: PropTypes.string,
+    })
+  )
 };
 
 export default Error

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {getUserRequestData} from "../../selectors/user/selectors";
 import {UserAsyncActionCreator} from "../../actions/user/async-action-creator";
@@ -149,6 +150,18 @@ class SignIn extends React.PureComponent {
     );
   }
 }
+
+SignIn.propTypes = {
+  userRequestData: PropTypes.shape({
+    status: PropTypes.oneOfType([
+      PropTypes.number,
+      null,
+    ]),
+    message: PropTypes.string,
+  }),
+  login: PropTypes.func,
+  register: PropTypes.func,
+};
 
 const mapStateToProps = (state) => ({
   userRequestData: getUserRequestData(state),

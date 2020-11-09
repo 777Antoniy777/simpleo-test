@@ -1,4 +1,5 @@
 import {AuthorizationStatus, RequestMessage, RequestStatus} from "../../js/enums";
+import {setAuthorizationStatus} from "../../js/setAuthorizationStatus";
 import {UserActionCreator} from "./action-creator";
 import {UsersActionCreator} from "../users/action-creator";
 
@@ -8,14 +9,17 @@ const UserAsyncActionCreator = {
       .then((response) => {
         if (response.data.length > 0) {
           onUpdateFormState();
+          const authorizationStatus = setAuthorizationStatus(AuthorizationStatus.AUTH);
 
-          dispatch(UserActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
+          dispatch(UserActionCreator.setAuthorizationStatus(authorizationStatus));
           dispatch(UserActionCreator.setRequestData({
             status: RequestStatus.OK,
             message: '',
           }));
         } else {
-          dispatch(UserActionCreator.setAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+          const authorizationStatus = setAuthorizationStatus(AuthorizationStatus.NO_AUTH);
+
+          dispatch(UserActionCreator.setAuthorizationStatus(authorizationStatus));
           dispatch(UserActionCreator.setRequestData({
             status: RequestStatus.ERROR,
             message: RequestMessage.ERROR_LOGIN_MESSAGE,
@@ -23,7 +27,9 @@ const UserAsyncActionCreator = {
         }
       })
       .catch((error) => {
-        dispatch(UserActionCreator.setAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+        const authorizationStatus = setAuthorizationStatus(AuthorizationStatus.NO_AUTH);
+
+        dispatch(UserActionCreator.setAuthorizationStatus(authorizationStatus));
         dispatch(UserActionCreator.setRequestData({
           status: RequestStatus.ERROR,
           message: RequestMessage.ERROR_MESSAGE,
@@ -42,8 +48,9 @@ const UserAsyncActionCreator = {
     return api.post(`/users`, formData)
       .then((response) => {
         onUpdateFormState();
+        const authorizationStatus = setAuthorizationStatus(AuthorizationStatus.AUTH);
 
-        dispatch(UserActionCreator.setAuthorizationStatus(AuthorizationStatus.AUTH));
+        dispatch(UserActionCreator.setAuthorizationStatus(authorizationStatus));
         dispatch(UsersActionCreator.addUser(response.data));
         dispatch(UserActionCreator.setRequestData({
           status: RequestStatus.OK,
@@ -51,7 +58,9 @@ const UserAsyncActionCreator = {
         }));
       })
       .catch((error) => {
-        dispatch(UserActionCreator.setAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+        const authorizationStatus = setAuthorizationStatus(AuthorizationStatus.NO_AUTH);
+
+        dispatch(UserActionCreator.setAuthorizationStatus(authorizationStatus));
         dispatch(UserActionCreator.setRequestData({
           status: RequestStatus.ERROR,
           message: RequestMessage.ERROR_MESSAGE,

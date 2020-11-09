@@ -20,7 +20,17 @@ const Button = styled.button`
   margin: auto auto 0;
   background-color: transparent;
   border: none;
+  transition: opacity 0.3s;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
 `;
 
 export {Wrapper, Button};

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {getTemperatureData, getTemperatureRequestData} from "../../selectors/temperature/selectors";
 import {getUsersData, getUsersRequestData} from "../../selectors/users/selectors";
@@ -72,6 +73,48 @@ const Data = ({temperature, users, currentCategory, categoriesRequestData,  user
       </TableWrapper>
     </Wrapper>
   );
+};
+
+Data.propTypes = {
+  temperature: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      data: PropTypes.string,
+    }),
+  ),
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      data: PropTypes.string,
+      password: PropTypes.string,
+    }),
+  ),
+  currentCategory: PropTypes.string,
+  categoriesRequestData: PropTypes.shape({
+    status: PropTypes.oneOfType([
+      PropTypes.number,
+      null,
+    ]),
+    message: PropTypes.string,
+  }),
+  usersRequestData: PropTypes.shape({
+    status: PropTypes.oneOfType([
+      PropTypes.number,
+      null,
+    ]),
+    message: PropTypes.string,
+  }),
+  temperatureRequestData: PropTypes.shape({
+    status: PropTypes.oneOfType([
+      PropTypes.number,
+      null,
+    ]),
+    message: PropTypes.string,
+  }),
+  editTemperature: PropTypes.func,
+  deleteTemperature: PropTypes.func,
+  editUser: PropTypes.func,
+  deleteUser: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

@@ -54,6 +54,7 @@ const Form =  styled.form`
       color: ${ConstStyle.C_BLUE_VIOLET};
       background-color: ${ConstStyle.C_WHITE};
       border: 1px solid ${ConstStyle.C_BLACK};
+      transition: opacity 0.3s;
       cursor: pointer;
 
       &:first-child {
@@ -65,6 +66,15 @@ const Form =  styled.form`
       &:last-child {
         border-bottom-right-radius: 5px;
         border-top-right-radius: 5px;
+      }
+
+      &:hover,
+      &:focus {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.5;
       }
     }
   }

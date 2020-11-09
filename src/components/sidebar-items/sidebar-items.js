@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {List, Item} from "./styles";
 
 const SidebarItem = ({elem, fullSidebar, setCurrentCategory}) => {
@@ -41,6 +42,27 @@ const SidebarItems = ({categories, fullSidebar, setCurrentCategory}) => {
 
     </List>
   );
+};
+
+SidebarItem.propTypes = {
+  elem: PropTypes.shape({
+    id: PropTypes.number,
+    category: PropTypes.string,
+    icon: PropTypes.element,
+  }),
+  fullSidebar: PropTypes.bool,
+  setCurrentCategory: PropTypes.func,
+};
+
+SidebarItems.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      category: PropTypes.string,
+    }),
+  ),
+  fullSidebar: PropTypes.bool,
+  setCurrentCategory: PropTypes.func,
 };
 
 export default SidebarItems;

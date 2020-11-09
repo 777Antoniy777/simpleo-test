@@ -78,8 +78,7 @@ const createJSLoader = () => {
 const createPlugins = () => {
   const initialPlugins = [
     new HTMLWebpackPlugin({
-      template: '../public/index.html',
-      // template: './index.html',
+      template: './index.html',
       filename: setHTMLFilename(),
       minify: {
         collapseWhitespace: isProd,

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {getCategories} from "../../selectors/categories/selectors";
 import {CategoriesActionCreator} from "../../actions/categories/action-creator";
@@ -50,6 +51,16 @@ class Sidebar extends React.PureComponent {
     );
   }
 }
+
+Sidebar.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      category: PropTypes.string,
+    }),
+  ),
+  setCurrentCategory: PropTypes.func,
+};
 
 const mapStateToProps = (state) => ({
   categories: getCategories(state),

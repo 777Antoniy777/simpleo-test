@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch} from "react-router-dom";
 import {AppRoute, AuthorizationStatus} from "../../js/enums";
 import {getAuthorizationStatus} from "../../selectors/user/selectors";
 import Main from "../main/main";
@@ -45,6 +46,10 @@ const App = ({authorizationStatus}) => {
       </Switch>
     </BrowserRouter>
   );
+};
+
+App.propTypes = {
+  authorizationStatus: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
